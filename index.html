@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фермерское хозяйство - Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo2.png" alt="Логотип фермы">
+            <h1 class="logo-text">Улей Земли</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Учёт пчёл</a></li>
+                <li><a href="#">Учёт мёда</a></li>
+                <li><a href="#">Учёт цветов</a></li>
+                <li><a href="#">Отчёты</a></li>
+                <li><a href="#">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>    
+
+    <main>
+        <section class="statistics">
+            <div class="card">
+                <img src="images/bee-black.png" alt="Пчелиные семьи">
+                <h3>Пчелиных семей</h3>
+                <p>50</p>
+            </div>
+            <div class="card">
+                <img src="images/flower.png" alt="Цветы для мёда">
+                <h3>Цветов для мёда (га)</h3>
+                <p>20</p>
+            </div>
+            <div class="card">
+                <img src="images/honey.png" alt="Собранный мёд">
+                <h3>Собранного мёда (кг)</h3>
+                <p>350</p>
+            </div>
+        </section>
+        <section class="charts">
+            <div class="chart-container">
+                <h3>Прирост/убыль пчелиных семей</h3>
+                <canvas id="beeChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Урожайность медовых цветов (кг)</h3>
+                <canvas id="flowerChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Подключение Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="charts.js"></script>
+          
+    </main>
+
+    <footer>
+        <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+    </footer>
+</body>
+</html>
