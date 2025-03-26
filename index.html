@@ -15,33 +15,32 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Главная</a></li>
+                <li><a href="index.html" class="active">Главная</a></li>
                 <li><a href="#">Учёт пчёл</a></li>
                 <li><a href="#">Учёт мёда</a></li>
                 <li><a href="#">Учёт цветов</a></li>
                 <li><a href="#">Отчёты</a></li>
-                <li><a href="#">Профиль</a></li>
+                <li><a href="profile.html">Профиль</a></li>
             </ul>
         </nav>
     </header>    
 
     <main>
         <section class="statistics">
-            <div class="card">
-                <img src="images/bee-black.png" alt="Пчелиные семьи">
-                <h3>Пчелиных семей</h3>
-                <p>50</p>
-            </div>
-            <div class="card">
-                <img src="images/flower.png" alt="Цветы для мёда">
-                <h3>Цветов для мёда (га)</h3>
-                <p>20</p>
-            </div>
-            <div class="card">
-                <img src="images/honey.png" alt="Собранный мёд">
-                <h3>Собранного мёда (кг)</h3>
-                <p>350</p>
-            </div>
+            <div class="honeycomb-container">
+                <div class="honeycomb-card">
+                    <img src="images/bee-black.png" alt="Пчелиные семьи" width="50">
+                    <p>Пчелиные семьи: 50</p>
+                </div>
+                <div class="honeycomb-card">
+                    <img src="images/flower.png" alt="Цветы для мёда" width="50">
+                    <p>Цветы для мёда: 2000</p>
+                </div>
+                <div class="honeycomb-card">
+                    <img src="images/honey.png" alt="Собрано мёда" width="50">
+                    <p>Собрано мёда: 500 кг</p>
+                </div>
+            </div>                              
         </section>
         <section class="charts">
             <div class="chart-container">
@@ -57,8 +56,11 @@
         <!-- Подключение Chart.js -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="charts.js"></script>
-          
     </main>
+
+    <audio id="background-music" autoplay loop>
+        <source src="Stardew Valley Overture.mp3" type="audio/mpeg">
+    </audio>
 
     <footer>
         <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
