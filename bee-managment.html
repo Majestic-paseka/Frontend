@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Улей Земли - Учёт пчёл</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo2.png" alt="Логотип фермы">
+            <h1 class="logo-text">Улей Земли</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="bee-management.html" class="active">Учёт пчёл</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+                <li><a href="register.html">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bee-management">
+            <h2>Учёт пчелиных семей</h2>
+            <div class="filters">
+                <label for="health-filter">Фильтр по состоянию здоровья:</label>
+                <select id="health-filter" name="health">
+                    <option value="all">Все</option>
+                    <option value="good">Хорошее</option>
+                    <option value="bad">Плохое</option>
+                </select>
+                
+                <label for="bee-count-filter">Фильтр по количеству пчёл:</label>
+                <input type="number" id="bee-count-filter" name="beeCount" placeholder="Мин. количество">
+            </div>            
+            <table class="bee-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Количество пчёл</th>
+                        <th>Состояние здоровья</th>
+                        <th>Медовый сбор (кг)</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>500</td>
+                        <td>Хорошее</td>
+                        <td>50</td>
+                        <td>
+                            <button class="edit-button">Редактировать</button>
+                            <button class="delete-button">Удалить</button>
+                            <button class="details-button">Подробнее</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>300</td>
+                        <td>Плохое</td>
+                        <td>20</td>
+                        <td>
+                            <button class="edit-button">Редактировать</button>
+                            <button class="delete-button">Удалить</button>
+                            <button class="details-button">Подробнее</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-button">Добавить пчелиную семью</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+    </footer>
+</body>
+</html>
