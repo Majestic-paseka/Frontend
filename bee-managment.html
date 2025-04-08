@@ -9,15 +9,17 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="images/logo2.png" alt="Логотип фермы">
+            <img src="images/new_logo.png" alt="Логотип фермы">
             <h1 class="logo-text">Улей Земли</h1>
         </div>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="bee-management.html" class="active">Учёт пчёл</a></li>
+                <li><a href="#">Учёт мёда</a></li>
+                <li><a href="#">Учёт цветов</a></li>
+                <li><a href="#">Отчёты</a></li>
                 <li><a href="profile.html">Профиль</a></li>
-                <li><a href="register.html">Регистрация</a></li>
             </ul>
         </nav>
     </header>
@@ -73,10 +75,66 @@
             </table>
             <button class="add-button">Добавить пчелиную семью</button>
         </section>
+
+        <!-- Модальное окно -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Добавить пчелиную семью</h2>
+            <form id="add-bee-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="bee-id">ID:</label>
+                    <input type="text" id="bee-id" name="beeId" required placeholder="Введите ID">
+                </div>
+                <div class="form-group">
+                    <label for="bee-count">Количество пчёл:</label>
+                    <input type="number" id="bee-count" name="beeCount" required placeholder="Введите количество">
+                </div>
+                <div class="form-group">
+                    <label for="bee-health">Состояние здоровья:</label>
+                    <select id="bee-health" name="beeHealth" required>
+                        <option value="good">Хорошее</option>
+                        <option value="bad">Плохое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="honey-collection">Медовый сбор (кг):</label>
+                    <input type="number" id="honey-collection" name="honeyCollection" step="0.1" required placeholder="Введите сбор">
+                </div>
+                <button type="submit" class="submit-button">Сохранить</button>
+            </form>
+        </div>
+    </div>
     </main>
 
     <footer>
         <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
     </footer>
+
+     <!-- JavaScript для работы модального окна -->
+  <script>
+    // Получает элементы
+    var modal = document.getElementById("modal");
+    var addButton = document.querySelector(".add-button");
+    var closeButton = document.querySelector(".close-button");
+
+    // Открыть модальное окно при клике на кнопку "Добавить пчелиную семью"
+    addButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Предотвращает возможное действие по умолчанию
+        modal.style.display = "block";
+    });
+
+    // Закрыть модальное окно при клике на крестик
+    closeButton.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    // Закрыть модальное окно, если клик вне области содержимого
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>

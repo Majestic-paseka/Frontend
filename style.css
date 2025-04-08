@@ -1,3 +1,4 @@
+/* Стили для всего тела страницы */
 body {
     font-family: Arial, sans-serif;
     padding: 0;
@@ -8,6 +9,7 @@ body {
     overflow-y: auto; /* Вертикальная прокрутка */
 }
 
+/* Шапка сайта */
 header {
     background-color: #212121;
     color: #FFC107;
@@ -18,6 +20,7 @@ header {
     justify-content: space-between;
 }
 
+/* Текст логотипа в шапке */
 .logo-text {
     font-family: 'Dancing Script', cursive;
     font-size: 28px;
@@ -26,6 +29,7 @@ header {
     text-align: center;
 }
 
+/* Контейнер логотипа (иконка + текст) */
 .logo-container {
     display: flex;
     align-items: center;
@@ -37,7 +41,7 @@ header {
     margin-top: -10px; 
 }
 
-
+/* Меню навигации */
 nav ul {
     list-style: none;
     padding: 0;
@@ -55,12 +59,14 @@ nav ul li a {
     font-weight: bold;
 }
 
+/* Основная часть страницы */
 main {
     min-height: 90vh; /* Минимальная высота 90% от высоты экрана */
     padding: 50px; /* Внутренние отступы */
     box-sizing: border-box; /* Учитывание отступов в общую высоту */
 }
 
+/* Блок статистики */
 .statistics {
     display: flex;
     justify-content: center;
@@ -68,6 +74,7 @@ main {
     margin-bottom: 20px;
 }
 
+/* Карточка соты */
 .honeycomb-card {
     width: 200px;
     height: 220px;
@@ -85,6 +92,7 @@ main {
     padding: 10px;
 }
 
+/* Контейнер для всех сот */
 .honeycomb-container {
     display: flex;
     flex-wrap: wrap;
@@ -96,11 +104,13 @@ main {
     transform: translateY(10px); /* Смещение четных карточек вниз */
 }
 
+/* Смещение нечётных сот вниз для "пчелиной сетки" */
 .honeycomb-card img {
     position: relative;
     z-index: 1;
 }
 
+/* Заголовок внутри карточки (возможно, лишний класс — нет card в HTML) */
 .card h3 {
     margin-bottom: 10px;
     font-size: 18px;
@@ -112,6 +122,7 @@ main {
     z-index: 1;
 }
 
+/* Контейнер с графиками */
 .charts {
     display: flex;
     justify-content: center;
@@ -119,6 +130,7 @@ main {
     margin-top: 20px;
 }
 
+/* Отдельная карточка с графиком */
 .chart-container {
     width: 500px;
     height: 300px; /* Фиксированная высота */
@@ -143,6 +155,7 @@ main {
     width: 100% !important; /* Чтобы график заполнял контейнер */
 }
 
+/* Нижний колонтитул */
 footer {
     position: fixed;
     bottom: 0;
@@ -154,6 +167,7 @@ footer {
     padding: 10px;
 }
 
+/* Профиль пользователя */
 .profile {
     padding: 20px;
     text-align: center;
@@ -182,7 +196,7 @@ footer {
     border-radius: 50%; /* Сохранение круглой формы для изображения */
 }
 
-
+/* Блок с деталями профиля */
 .details {
     background-color: #FFF3CD;
     padding: 20px;
@@ -192,11 +206,13 @@ footer {
     width: 300px;
 }
 
+/* Активный пункт меню */
 nav ul li a.active {
     color: #FFC107; /* Желтый цвет */
     
 }
 
+/* Кнопки редактирования и выхода */
 .profile-actions {
     display: flex;
     justify-content: center;
@@ -204,16 +220,31 @@ nav ul li a.active {
     margin-top: 20px;
 }
 
-.edit-button, .logout-button {
+.edit-button {
     background-color: #FFC107; /* Желтый цвет кнопки */
     color: #212121; /* Темный текст */
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: center; /* Центрируем текст внутри кнопок */
+}
+
+.logout-button {
+    background-color: #FFC107; /* Желтый цвет кнопки */
+    color: #212121; /* Темный текст */
+    border: none;
+    padding: 10px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 37px; /* Указываем фиксированную высоту */
+    margin-top: 5px;  /* Отступ сверху для опускания кнопки ниже */
 }
 
 .edit-button:hover, .logout-button:hover {
@@ -224,6 +255,7 @@ nav ul li a.active {
     background-color: #FFB300; /* Более темный желтый при нажатии */
 }
 
+/* Страница входа */
 .login {
     padding: 20px;
     text-align: center;
@@ -255,6 +287,7 @@ label {
     color: #212121;
 }
 
+/* Поля ввода для email и пароля */
 input[type="email"], input[type="password"] {
     width: 350px; /* Устанавливается фиксированная ширина */
     padding: 10px;
@@ -272,7 +305,7 @@ input[type="email"]:focus, input[type="password"]:focus {
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 
-
+/* Кнопка входа */
 .login-button {
     background-color: #FFC107;
     color: #212121;
@@ -305,6 +338,7 @@ input[type="email"]:focus, input[type="password"]:focus {
     background-color: #FFB300;
 }
 
+/* Страница регистрации */
 .register {
     padding: 20px;
     text-align: center;
@@ -338,6 +372,7 @@ form {
     margin-bottom: 10px; /* Отступ между текстом лейбла и формой ввода */
 }
 
+/* Поля формы регистрации */
 input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="file"] {
     width: 100%;
     padding: 10px;
@@ -354,6 +389,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, in
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 
+/* Кнопка регистрации */
 .register-button {
     background-color: #FFC107; /* Желтая кнопка */
     color: #212121; /* Темный текст */
@@ -377,6 +413,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, in
     background-color: #FFB300;
 }
 
+/* Поле пароля отдельно */
 input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -391,6 +428,7 @@ input[type="password"]:focus {
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
 }
 
+/* Кнопка загрузки файла */
 .upload-button {
     background-color: #FFC107; /* Желтая кнопка */
     color: #212121;
@@ -414,11 +452,13 @@ input[type="password"]:focus {
     background-color: #FFB300;
 }
 
+/* Управление пчёлами — раздел пчеловодства */
 .bee-management {
     padding: 20px;
     text-align: center;
 }
 
+/* Фильтры для таблицы */
 .filters {
     display: flex;
     justify-content: center;
@@ -426,6 +466,7 @@ input[type="password"]:focus {
     margin-bottom: 20px;
 }
 
+/* Таблица пчел */
 .bee-table {
     width: 100%;
     border-collapse: collapse;
@@ -451,6 +492,7 @@ input[type="password"]:focus {
     background-color: #FFF3CD;
 }
 
+/* Кнопки управления таблицей пчел */
 .add-button, .edit-button, .delete-button, .details-button {
     background-color: #FFC107;
     color: #212121;
@@ -459,10 +501,11 @@ input[type="password"]:focus {
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 5px;
+    margin: 5px; 
     transition: background-color 0.3s;
 }
 
+/* Стили для селектов и числовых полей в фильтрах */
 .filters select, 
 .filters input[type="number"] {
     background-color: #FFC107; /* Единый желтый фон */
@@ -491,3 +534,165 @@ input[type="number"]::placeholder {
     box-shadow: 0 0 5px rgba(255, 193, 7, 0.8); /* Тень при фокусе */
 }
 
+/* Модальное окно: затемнённый фон, покрывающий всю страницу */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000; /* Поверх всех остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  }
+  
+  /* Контейнер содержимого модального окна */
+  .modal-content {
+    background-color: #FFF3CD; /* Подходящий фон согласно стилю сайта */
+    margin: 10% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  /* Кнопка закрытия окна (крестик) */
+  .close-button {
+    color: #212121;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: #FFB300;
+  }
+  
+  /* Стили для формы внутри модального окна */
+  .modal-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #212121;
+  }
+  
+  .modal-content .form-group input,
+  .modal-content .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Стили для кнопки сохранения */
+  .submit-button {
+    background-color: #FFC107;
+    color: #212121;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #FFD54F;
+  }
+
+  /* Универсальный стиль для всех полей */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+    background-color: #FFB300; /* Фон всех полей */
+    color: #212121;            /* Если нужен темный цвет текста */
+    border: 1px solid #CCC;    /* Можно задать границу, если требуется */
+    border-radius: 5px;        /* Скругление углов */
+    padding: 8px;              /* Внутренние отступы */
+    font-size: 15px;           /* Размер шрифта */
+    box-sizing: border-box;    /* Чтобы padding учитывался в размере */
+}
+
+input[type="text"]::placeholder {
+    color: #212121;
+    opacity: 1; /* Обеспечивает полную видимость цвета */
+}
+
+/* Виджет с иконкой пчелы и фактами */
+#bee-widget {
+    position: fixed; /* Фиксированное позиционирование сохраняет виджет в левом нижнем углу */
+    bottom: 77px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  /* Оформление иконки (без изменений) */
+  #bee-icon {
+    width: 50px;
+    height: auto;
+    display: block;
+  }
+  
+  /* Окно с фактом, располагаемое справа от иконки пчелы */
+#bee-fact {
+    position: absolute;
+    left: 60px; /* Отступ слева от контейнера, чтобы окно оказалось справа от иконки */
+    bottom: 0;  /* Можно подправить, если нужно выровнять по вертикали иначе */
+    background-color: #FFF3CD;
+    color: #212121;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 250px;    /* Задаём минимальную ширину */
+    max-width: 400px;    /* Увеличиваем максимальную ширину */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+  
+  /* Скрытый элемент */
+  .hidden {
+    display: none;
+  } 
+
+/* Определяем анимацию подпрыгивания */
+@keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    70% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Класс, который вызывает анимацию */
+  .jump {
+    animation: jump 0.5s ease;
+  }
+  
