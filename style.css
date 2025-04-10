@@ -503,22 +503,35 @@ input[type="password"]:focus {
     cursor: pointer;
     margin: 5px; 
     transition: background-color 0.3s;
+    font-weight: normal;
+    margin-right: 5px; /* Отступ справа для отделения от текста */
+    font-size: 16px;   /* Размер иконки */
+    vertical-align: middle;
 }
 
 /* Стили для селектов и числовых полей в фильтрах */
 .filters select, 
-.filters input[type="number"] {
+.filters input[type="number"],
+.filters input[type="date"] {
     background-color: #FFC107; /* Единый желтый фон */
-    color: #212121; /* Темный текст */
-    border: 1px solid #CCC; /* Светлая рамка */
-    border-radius: 5px; /* Скругленные углы */
-    padding: 10px; /* Внутренние отступы */
-    font-size: 16px; /* Размер текста */
-    font-weight: bold; /* Толщина текста */
-    cursor: pointer; /* Курсор указывает на интерактивность */
+    color: #212121;           /* Темный текст */
+    border: 1px solid #CCC;   /* Светлая рамка */
+    border-radius: 5px;       /* Скругленные углы */
+    padding: 10px;            /* Внутренние отступы */
+    font-size: 16px;          /* Размер текста */
+    font-weight: bold;        /* Толщина текста */
+    cursor: pointer;          /* Курсор указывает на интерактивность */
     transition: background-color 0.3s, box-shadow 0.3s; /* Эффекты при наведении */
-    display: inline-block; /* Одинаковое поведение для обоих элементов */
-    width: 200px; /* Общая ширина */
+    display: inline-block;    /* Одинаковое поведение для обоих элементов */
+    width: 200px;             /* Общая ширина */
+}
+
+/* Псевдоэлементы для браузеров на базе WebKit (Chrome, Safari) */
+.filters input[type="date"]::-webkit-datetime-edit,
+.filters input[type="date"]::-webkit-datetime-edit-day-field,
+.filters input[type="date"]::-webkit-datetime-edit-month-field,
+.filters input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #212121 !important;
 }
 
 .filters select:hover, 
@@ -655,14 +668,14 @@ input[type="text"]::placeholder {
 #bee-fact {
     position: absolute;
     left: 60px; /* Отступ слева от контейнера, чтобы окно оказалось справа от иконки */
-    bottom: 0;  /* Можно подправить, если нужно выровнять по вертикали иначе */
+    bottom: 0;  /* Можно подправить, если нужно выровнять по вертикали */
     background-color: #FFF3CD;
     color: #212121;
     border: 1px solid #CCC;
     border-radius: 5px;
     padding: 10px;
-    min-width: 250px;    /* Задаём минимальную ширину */
-    max-width: 400px;    /* Увеличиваем максимальную ширину */
+    min-width: 250px;    /* Задаёт минимальную ширину */
+    max-width: 400px;    /* Увеличивает максимальную ширину */
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -672,7 +685,7 @@ input[type="text"]::placeholder {
     display: none;
   } 
 
-/* Определяем анимацию подпрыгивания */
+/* Определяет анимацию подпрыгивания */
 @keyframes jump {
     0% {
       transform: translateY(0);
@@ -694,5 +707,96 @@ input[type="text"]::placeholder {
   /* Класс, который вызывает анимацию */
   .jump {
     animation: jump 0.5s ease;
+  }
+
+  .chart-container-honey {
+    width: 80%;
+    margin: 0 auto;            /* Центрирование контейнера по горизонтали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* Центрирование элементов по горизонтали */
+    justify-content: center;   /* По желанию – центровать элементы по вертикали */
+  }
+  
+  /* Модальное окно: затемнённый фон, покрывающий всю страницу */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000; /* Поверх всех остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  }
+  
+  /* Контейнер содержимого модального окна */
+  .modal-content {
+    background-color: #FFF3CD; /* Соответствующий стилю сайта */
+    margin: 10% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  /* Кнопка закрытия (крестик) */
+  .close-button {
+    color: #212121;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: #FFB300;
+  }
+  
+  /* Стили для формы в модальном окне */
+  .modal-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #212121;
+  }
+  
+  .modal-content .form-group input,
+  .modal-content .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Стили для кнопки сохранения */
+  .submit-button {
+    background-color: #FFC107;
+    color: #212121;
+    border: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #FFD54F;
   }
   

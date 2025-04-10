@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Улей Земли - Учёт мёда</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/new_logo.png" alt="Логотип фермы">
+      <h1 class="logo-text">Улей Земли</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="bee-managment.html">Учёт пчёл</a></li>
+        <li><a href="honey-management.html" class="active">Учёт мёда</a></li>
+        <li><a href="#">Учёт цветов</a></li>
+        <li><a href="profile.html">Профиль</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="bee-management">
+      <h2>Учёт мёда</h2>
+      
+      <!-- Фильтры -->
+      <div class="filters">
+        <label for="honey-type-filter">Фильтр по типу меда:</label>
+        <select id="honey-type-filter" name="honeyType">
+          <option value="all">Все</option>
+          <option value="clover">Клеверный</option>
+          <option value="linden">Липовый</option>
+          <option value="acacia">Акациевый</option>
+        </select>
+        
+        <label for="collection-date-filter">Фильтр по дате сбора:</label>
+        <input type="date" id="collection-date-filter" name="collectionDate">
+        
+        <label for="volume-filter">Фильтр по объёму (кг):</label>
+        <input type="number" id="volume-filter" name="volume" placeholder="Мин. объём">
+      </div>
+      
+      <!-- Таблица учёта мёда -->
+      <table class="bee-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Тип меда</th>
+            <th>Объём (кг)</th>
+            <th>Дата сбора</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Клеверный</td>
+            <td>35</td>
+            <td>2025-04-10</td>
+            <td>
+              <button class="edit-button">
+                <i class="images/edit.png"></i> Редактировать
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash-alt"></i> Удалить
+              </button>
+              <button class="details-button">
+                <i class="fa-solid fa-info-circle"></i> Подробнее
+              </button>              
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Липовый</td>
+            <td>42</td>
+            <td>2025-04-12</td>
+            <td>
+              <button class="edit-button">
+                <i class="fa-solid fa-pen-to-square"></i> Редактировать
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash-alt"></i> Удалить
+              </button>
+              <button class="details-button">
+                <i class="fa-solid fa-info-circle"></i> Подробнее
+              </button>              
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Акациевый</td>
+            <td>28</td>
+            <td>2025-04-15</td>
+            <td>
+              <button class="edit-button">
+                <i class="fa-solid fa-pen-to-square"></i> Редактировать
+              </button>
+              <button class="delete-button">
+                <i class="fa-solid fa-trash-alt"></i> Удалить
+              </button>
+              <button class="details-button">
+                <i class="fa-solid fa-info-circle"></i> Подробнее
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Кнопка для добавления мёда -->
+      <button class="add-button">Добавить мед</button>
+      
+      <!-- График урожайности мёда по сезонам -->
+      <div class="chart-container-honey">
+        <h3>График урожайности мёда по сезонам</h3>
+        <canvas id="honeyChart"></canvas>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Модальное окно для добавления мёда -->
+<div id="modal-honey" class="modal">
+  <div class="modal-content">
+    <span class="close-button" id="close-honey-modal">&times;</span>
+    <h2>Добавить мед</h2>
+    <form id="add-honey-form" action="#" method="post">
+      <div class="form-group">
+        <label for="honey-id">ID:</label>
+        <input type="text" id="honey-id" name="honeyId" required placeholder="Введите ID">
+      </div>
+      <div class="form-group">
+        <label for="honey-type">Тип меда:</label>
+        <select id="honey-type" name="honeyType" required>
+          <option value="clover">Клеверный</option>
+          <option value="linden">Липовый</option>
+          <option value="acacia">Акациевый</option>
+          <option value="other">Другой</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="honey-volume">Объём (кг):</label>
+        <input type="number" id="honey-volume" name="honeyVolume" step="0.1" required placeholder="Введите объём в кг">
+      </div>
+      <div class="form-group">
+        <label for="collection-date">Дата сбора:</label>
+        <input type="date" id="collection-date" name="collectionDate" required>
+      </div>
+      <button type="submit" class="submit-button">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+  <footer>
+    <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+  </footer>
+  
+  <!-- Подключение Chart.js и скрипта для графика -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="honeyChart.js"></script>
+
+  <script>
+    // Получаем элементы:
+    const addHoneyButton = document.querySelector('.add-button'); // кнопка "Добавить мед" на странице учёта мёда
+    const honeyModal = document.getElementById('modal-honey');
+    const closeHoneyModal = document.getElementById('close-honey-modal');
+  
+    // Открытие модального окна при клике на кнопку "Добавить мед"
+    addHoneyButton.addEventListener('click', function(e) {
+      e.preventDefault(); // чтобы не перезагружалась страница
+      honeyModal.style.display = 'block';
+    });
+  
+    // Закрытие модального окна при клике на крестик
+    closeHoneyModal.addEventListener('click', function() {
+      honeyModal.style.display = 'none';
+    });
+  
+    // Закрытие модального окна при клике вне его содержимого
+    window.addEventListener('click', function(event) {
+      if (event.target === honeyModal) {
+        honeyModal.style.display = 'none';
+      }
+    });
+  </script>  
+</body>
+</html>
