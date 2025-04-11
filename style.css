@@ -496,11 +496,11 @@ input[type="password"]:focus {
 .bee-table th:last-child,
 .bee-table td:last-child {
     width: 100px;        /* Фиксированная ширина для уменьшения пространства */
-    white-space: nowrap; /* Запрещаем перенос строк внутри ячеек */
+    white-space: nowrap; /* Запрещает перенос строк внутри ячеек */
     padding: 5px;        /* Уменьшенный отступ для экономии места */
 }
 
-/* Кнопки управления таблицей пчел */
+/* Кнопки управления таблицей пчел КАК ОНИ МНЕ УЖЕ НАДОЕЛИ, ОДНО ПОМЕНЯЩЬ СРАЗУ ВСЁ ЛОМАЕТСЯ*/
 .add-button, .edit-button, .delete-button, .details-button {
     background-color: #FFC107;
     color: #212121;
@@ -516,7 +516,7 @@ input[type="password"]:focus {
     font-size: 16px;   /* Размер иконки */
     vertical-align: middle;
 }
-/* Кнопка "Редактировать" */
+/* Кнопка "Редактировать" НАЛОЕЛА ВСЁ ЛОМАТЬ УЖЕ УЙДИ ОТСЮДА */
 .edit-button {
     background: url('images/edit.png') no-repeat 10px center; /* Иконка редактирования */
     background-size: 20px 20px; /* Размер иконки */
@@ -547,7 +547,7 @@ input[type="password"]:focus {
     vertical-align: middle;
   }
   
-  /* Кнопка "Подробнее" */
+  /* Кнопка "Подробнее" ЛУЧШАЯ КНОПКА, ВСЕГДА НОРМАЛЬНО АДАПТИРУЕТСЯ, СПАСИБО ТЕБЕ!*/
   .details-button {
     background: url('images/more.png') no-repeat 10px center; /* Иконка подробнее */
     background-size: 20px 20px; /* Размер иконки */
@@ -584,7 +584,7 @@ input[type="password"]:focus {
     width: 200px;             /* Общая ширина */
 }
 
-/* Псевдоэлементы для браузеров на базе WebKit (Chrome, Safari) */
+/* Псевдоэлементы для браузеров на базе WebKit (Chrome, Safari) ЗАЧЕМ КАЖДЫЙ БРАУЗЕР ПРИДУМАЛ СВОИ ЦВЕТА И ВНЕШНИЙ ВИД ДЛЯ ФИЛЬТРОВ??? */
 .filters input[type="date"]::-webkit-datetime-edit,
 .filters input[type="date"]::-webkit-datetime-edit-day-field,
 .filters input[type="date"]::-webkit-datetime-edit-month-field,
