@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учёт цветов для меда - Улей Земли</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Подключение Chart.js для графика -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Шапка сайта -->
+  <header>
+    <div class="logo-container">
+      <img src="images/new_logo.png" alt="Логотип фермы">
+      <h1 class="logo-text">Улей Земли</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="bee-management.html">Учёт пчёл</a></li>
+        <li><a href="honey-management.html">Учёт мёда</a></li>
+        <li><a href="flower-management.html" class="active">Учёт цветов</a></li>
+        <li><a href="profile.html">Профиль</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Основной контент страницы -->
+  <main>
+    <section class="bee-management">
+      <h2>Учёт цветов для меда</h2>
+      
+      <!-- Фильтры для таблицы -->
+      <div class="filters">
+        <label for="flower-type-filter">Фильтр по виду цветов:</label>
+        <select id="flower-type-filter" name="flowerType">
+          <option value="all">Все</option>
+          <option value="lavender">Лаванда</option>
+          <option value="sunflower">Подсолнечник</option>
+          <option value="rose">Роза</option>
+          <option value="tulip">Тюльпан</option>
+        </select>
+
+        <label for="area-filter">Фильтр по площади (га):</label>
+        <input type="number" id="area-filter" name="area" placeholder="Мин. площадь">
+
+        <label for="sowing-date-filter">Фильтр по дате посева:</label>
+        <input type="date" id="sowing-date-filter" name="sowingDate">
+      </div>
+      
+      <!-- Таблица с данными о посеве цветов -->
+      <table class="bee-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Вид цветка</th>
+            <th>Площадь (га)</th>
+            <th>Дата посева</th>
+            <th>Дата цветения</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Лаванда</td>
+            <td>10</td>
+            <td>2025-03-15</td>
+            <td>2025-05-01</td>
+            <td>
+                <button class="edit-button">Редактировать</button>
+                <button class="delete-button">Удалить</button>
+                <button class="details-button">Подробнее</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Подсолнечник</td>
+            <td>15</td>
+            <td>2025-04-01</td>
+            <td>2025-06-15</td>
+            <td>
+              <button class="edit-button">Редактировать</button>
+              <button class="delete-button">Удалить</button>
+              <button class="details-button">Подробнее</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Тюльпан</td>
+            <td>5</td>
+            <td>2025-03-20</td>
+            <td>2025-04-30</td>
+            <td>
+                <button class="edit-button">Редактировать</button>
+                <button class="delete-button">Удалить</button>
+                <button class="details-button">Подробнее</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Кнопка добавления нового цветка -->
+      <button class="add-button">Добавить цветок</button>
+
+      <!-- График цветения и сбора мёда по культурам -->
+      <div class="chart-container-honey">
+        <h3>График цветения и сбора меда по культурам</h3>
+        <canvas id="flowerChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Модальное окно для добавления нового цветка -->
+    <div id="modal-flower" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-flower-modal">&times;</span>
+        <h2>Добавить цветок</h2>
+        <form id="add-flower-form">
+          <div class="form-group">
+            <label for="flower-id">ID:</label>
+            <input type="text" id="flower-id" name="flowerId" placeholder="Введите ID" required>
+          </div>
+          <div class="form-group">
+            <label for="flower-type">Вид цветка:</label>
+            <select id="flower-type" name="flowerType" required>
+              <option value="lavender">Лаванда</option>
+              <option value="sunflower">Подсолнечник</option>
+              <option value="rose">Роза</option>
+              <option value="tulip">Тюльпан</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="flower-area">Площадь (га):</label>
+            <input type="number" id="flower-area" name="flowerArea" step="0.1" placeholder="Введите площадь" required>
+          </div>
+          <div class="form-group">
+            <label for="sowing-date">Дата посева:</label>
+            <input type="date" id="sowing-date" name="sowingDate" required>
+          </div>
+          <div class="form-group">
+            <label for="bloom-date">Дата цветения:</label>
+            <input type="date" id="bloom-date" name="bloomDate" required>
+          </div>
+          <button type="submit" class="submit-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Футер сайта -->
+  <footer>
+    <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
+  </footer>
+
+  <!-- Скрипты для модального окна -->
+  <script>
+    // Модальное окно для добавления цветка
+    const addFlowerButton = document.querySelector('.add-button');
+    const flowerModal = document.getElementById('modal-flower');
+    const closeFlowerModal = document.getElementById('close-flower-modal');
+
+    addFlowerButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      flowerModal.style.display = 'block';
+    });
+
+    closeFlowerModal.addEventListener('click', function() {
+      flowerModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target === flowerModal) {
+        flowerModal.style.display = 'none';
+      }
+    });
+  </script>
+
+  <!-- Скрипт для создания графика -->
+  <script>
+    const ctx = document.getElementById("flowerChart").getContext("2d");
+    const flowerChart = new Chart(ctx, {
+      type: "line", // тип графика (линейный, можно сменить на bar)
+      data: {
+        labels: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+        datasets: [{
+          label: "Цветения",
+          data: [2, 3, 5, 10, 15, 20, 25, 18, 12, 8, 4, 2],
+          backgroundColor: "rgba(156, 39, 176, 0.5)",
+          borderColor: "#9C27B0",
+          borderWidth: 2,
+          fill: false
+        },
+        {
+          label: "Сбор мёда",
+          data: [1, 2, 4, 8, 12, 18, 22, 15, 9, 6, 3, 1],
+          backgroundColor: "rgba(255, 193, 7, 0.5)",
+          borderColor: "#FFC107",
+          borderWidth: 2,
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 5
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: "top"
+          },
+          title: {
+            display: true,
+            text: "Цветение и сбор мёда по культурам"
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

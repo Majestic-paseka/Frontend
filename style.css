@@ -492,6 +492,14 @@ input[type="password"]:focus {
     background-color: #FFF3CD;
 }
 
+/* Сужаем последний столбец */
+.bee-table th:last-child,
+.bee-table td:last-child {
+    width: 100px;        /* Фиксированная ширина для уменьшения пространства */
+    white-space: nowrap; /* Запрещаем перенос строк внутри ячеек */
+    padding: 5px;        /* Уменьшенный отступ для экономии места */
+}
+
 /* Кнопки управления таблицей пчел */
 .add-button, .edit-button, .delete-button, .details-button {
     background-color: #FFC107;
@@ -508,6 +516,56 @@ input[type="password"]:focus {
     font-size: 16px;   /* Размер иконки */
     vertical-align: middle;
 }
+/* Кнопка "Редактировать" */
+.edit-button {
+    background: url('images/edit.png') no-repeat 10px center; /* Иконка редактирования */
+    background-size: 20px 20px; /* Размер иконки */
+    padding-left: 40px; /* Отступ слева для текста */
+    font-weight: normal;
+    background-color: #FFC107; /* Желтый фон */
+    color: #212121; /* Черный текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Кнопка "Удалить" */
+  .delete-button {
+    background: url('images/delete.png') no-repeat 10px center; /* Иконка удаления */
+    background-size: 20px 20px; /* Размер иконки */
+    padding-left: 40px; /* Отступ слева для текста */
+    font-weight: normal;
+    background-color: #FFC107; /* Желтый фон */
+    color: #212121; /* Черный текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    vertical-align: middle;
+  }
+  
+  /* Кнопка "Подробнее" */
+  .details-button {
+    background: url('images/more.png') no-repeat 10px center; /* Иконка подробнее */
+    background-size: 20px 20px; /* Размер иконки */
+    padding-left: 40px; /* Отступ слева для текста */
+    font-weight: normal;
+    background-color: #FFC107; /* Желтый фон */
+    color: #212121; /* Черный текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Общие эффекты при наведении для всех кнопок */
+  button:hover {
+    background-color: #FFD54F;
+  } 
 
 /* Стили для селектов и числовых полей в фильтрах */
 .filters select, 
