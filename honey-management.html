@@ -113,7 +113,6 @@
         <canvas id="honeyChart"></canvas>
       </div>
     </section>
-  </main>
   
   <!-- Модальное окно для добавления мёда -->
 <div id="modal-honey" class="modal">
@@ -147,6 +146,20 @@
   </div>
 </div>
 
+    <!-- Модальное окно для подтверждения удаления -->
+    <div id="delete-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="delete-close-button">&times;</span>
+        <h2>Подтверждение удаления</h2>
+        <p>Вы действительно хотите удалить эту запись?</p>
+        <div class="modal-actions">
+          <button id="confirm-delete" class="modal-delete-button">Удалить</button>
+          <button id="cancel-delete" class="modal-cancel-button">Отмена</button>
+        </div>
+      </div>
+    </div>
+  
+  </main>
   <footer>
     <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
   </footer>
@@ -176,6 +189,49 @@
     window.addEventListener('click', function(event) {
       if (event.target === honeyModal) {
         honeyModal.style.display = 'none';
+      }
+    });
+
+     // Модальное окно подтверждения удаления
+     var deleteModal = document.getElementById("delete-modal");
+    var deleteCloseButton = document.getElementById("delete-close-button");
+    var confirmDeleteButton = document.getElementById("confirm-delete");
+    var cancelDeleteButton = document.getElementById("cancel-delete");
+    var currentRow = null; // Ссылка на строку, которую нужно удалить
+
+    // При клике на любую кнопку "Удалить" в таблице
+    var deleteButtons = document.querySelectorAll("table .delete-button");
+    deleteButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        // Определяет какую строку необходимо удалить (родительский элемент <tr>)
+        currentRow = event.target.closest("tr");
+        // Открывает модальное окно подтверждения удаления
+        deleteModal.style.display = "block";
+      });
+    });
+
+    // Если нажали кнопку "Отмена"
+    cancelDeleteButton.addEventListener("click", function() {
+      deleteModal.style.display = "none";
+      currentRow = null;
+    });
+
+    // Если нажали кнопку "Удалить" в модальном окне
+    confirmDeleteButton.addEventListener("click", function() {
+      if (currentRow) {
+        // Здесь я так понял настраивать удаление через БД
+        currentRow.remove();
+        currentRow = null;
+      }
+      deleteModal.style.display = "none";
+    });
+
+    // Закрыть модальное окно при клике вне области его содержимого
+    window.addEventListener("click", function(event) {
+      if (event.target == deleteModal) {
+        deleteModal.style.display = "none";
+        currentRow = null;
       }
     });
   </script>  
