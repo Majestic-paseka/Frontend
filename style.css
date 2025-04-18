@@ -495,8 +495,13 @@ input[type="password"]:focus {
 .bee-table tr:nth-child(odd) {
     background-color: #FFF3CD;
 }
+.filters label {
+    font-size: 18px;    /* Увеличение размера шрифта */
+    margin-top: 10px;   /* Отступ сверху, чтобы опустить текст ниже */
+    line-height: 1.5;   /* Немного увеличенное межстрочное расстояние */
+}
 
-/* Сужаем последний столбец */
+/* Сужает последний столбец */
 .bee-table th:last-child,
 .bee-table td:last-child {
     width: 100px;        /* Фиксированная ширина для уменьшения пространства */
@@ -670,6 +675,10 @@ input[type="number"]::placeholder {
     border-radius: 5px;
     font-size: 15px;
     box-sizing: border-box;
+    font-weight: 100; 
+    font-size: 16px;  /* единый размер шрифта */
+    line-height: 1.5; /* равномерное межстрочное расстояние */
+    font-family: inherit; /* наследование шрифта от родительского элемента */
   }
   
   /* Стили для кнопки сохранения */

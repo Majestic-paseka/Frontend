@@ -18,7 +18,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Главная</a></li>
-        <li><a href="bee-management.html">Учёт пчёл</a></li>
+        <li><a href="bee-managment.html">Учёт пчёл</a></li>
         <li><a href="honey-management.html">Учёт мёда</a></li>
         <li><a href="flower-management.html" class="active">Учёт цветов</a></li>
         <li><a href="profile.html">Профиль</a></li>
@@ -29,7 +29,7 @@
   <!-- Основной контент страницы -->
   <main>
     <section class="bee-management">
-      <h2>Учёт цветов для меда</h2>
+      <h2>Учёт цветов для мёда</h2>
       
       <!-- Фильтры для таблицы -->
       <div class="filters">
@@ -62,19 +62,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- Пример строки с данными, переданными через data-атрибуты -->
+          <tr data-plant-id="1" 
+              data-plant-name="Лаванда" 
+              data-plant-species="Lavandula angustifolia" 
+              data-honey-price="200" 
+              data-start-blooming="2025-05-01" 
+              data-end-blooming="2025-05-20" 
+              data-purpose-of-sowing="Пчеловодство" 
+              data-honey-productivity="500">
             <td>1</td>
             <td>Лаванда</td>
             <td>10</td>
             <td>2025-03-15</td>
             <td>2025-05-01</td>
             <td>
-                <button class="edit-button">Редактировать</button>
-                <button class="delete-button">Удалить</button>
-                <button class="details-button">Подробнее</button>
+              <button class="edit-button">Редактировать</button>
+              <button class="delete-button">Удалить</button>
+              <button class="details-button">Подробнее</button>
             </td>
           </tr>
-          <tr>
+          <tr data-plant-id="2" 
+              data-plant-name="Подсолнечник" 
+              data-plant-species="Helianthus annuus" 
+              data-honey-price="150" 
+              data-start-blooming="2025-06-01" 
+              data-end-blooming="2025-06-20" 
+              data-purpose-of-sowing="Пищевой" 
+              data-honey-productivity="300">
             <td>2</td>
             <td>Подсолнечник</td>
             <td>15</td>
@@ -86,18 +101,7 @@
               <button class="details-button">Подробнее</button>
             </td>
           </tr>
-          <tr>
-            <td>3</td>
-            <td>Тюльпан</td>
-            <td>5</td>
-            <td>2025-03-20</td>
-            <td>2025-04-30</td>
-            <td>
-                <button class="edit-button">Редактировать</button>
-                <button class="delete-button">Удалить</button>
-                <button class="details-button">Подробнее</button>
-            </td>
-          </tr>
+          <!-- Дополнительные строки можно добавить аналогичным образом -->
         </tbody>
       </table>
       
@@ -148,18 +152,80 @@
       </div>
     </div>
 
-        <!-- Модальное окно для подтверждения удаления -->
-<div id="delete-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-button" id="delete-close-button">&times;</span>
-    <h2>Подтверждение удаления</h2>
-    <p>Вы действительно хотите удалить эту запись?</p>
-    <div class="modal-actions">
-      <button id="confirm-delete" class="modal-delete-button">Удалить</button>
-      <button id="cancel-delete" class="modal-cancel-button">Отмена</button>
+    <!-- Модальное окно для подтверждения удаления -->
+    <div id="delete-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="delete-close-button">&times;</span>
+        <h2>Подтверждение удаления</h2>
+        <p>Вы действительно хотите удалить эту запись?</p>
+        <div class="modal-actions">
+          <button id="confirm-delete" class="modal-delete-button">Удалить</button>
+          <button id="cancel-delete" class="modal-cancel-button">Отмена</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
+    <!-- Модальное окно для подробной информации о цветке -->
+    <div id="details-flower-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="details-flower-close-button">&times;</span>
+        <h2>Подробная информация о культуре</h2>
+        <div class="details-content">
+          <p><strong>ID:</strong> <span id="detail-plant-id"></span></p>
+          <p><strong>Название:</strong> <span id="detail-plant-name"></span></p>
+          <p><strong>Вид:</strong> <span id="detail-plant-species"></span></p>
+          <p><strong>Цена мёда:</strong> <span id="detail-honey-price"></span></p>
+          <p><strong>Начало цветения:</strong> <span id="detail-start-blooming"></span></p>
+          <p><strong>Окончание цветения:</strong> <span id="detail-end-blooming"></span></p>
+          <p><strong>Цель посева:</strong> <span id="detail-purpose-of-sowing"></span></p>
+          <p><strong>Урожайность мёда:</strong> <span id="detail-honey-productivity"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно для редактирования данных о цветке -->
+    <div id="edit-flower-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="edit-flower-close-button">&times;</span>
+        <h2>Редактировать данные о культуре</h2>
+        <form id="edit-flower-form">
+          <div class="form-group">
+            <label for="edit-plant-id">ID:</label>
+            <input type="text" id="edit-plant-id" name="plant_id" readonly>
+          </div>
+          <div class="form-group">
+            <label for="edit-plant-name">Название:</label>
+            <input type="text" id="edit-plant-name" name="plant_name">
+          </div>
+          <div class="form-group">
+            <label for="edit-plant-species">Вид:</label>
+            <input type="text" id="edit-plant-species" name="plant_species">
+          </div>
+          <div class="form-group">
+            <label for="edit-honey-price">Цена мёда:</label>
+            <input type="number" id="edit-honey-price" name="honey_price" step="0.01">
+          </div>
+          <div class="form-group">
+            <label for="edit-start-blooming">Начало цветения:</label>
+            <input type="date" id="edit-start-blooming" name="start_blooming">
+          </div>
+          <div class="form-group">
+            <label for="edit-end-blooming">Окончание цветения:</label>
+            <input type="date" id="edit-end-blooming" name="end_blooming">
+          </div>
+          <div class="form-group">
+            <label for="edit-purpose-of-sowing">Цель посева:</label>
+            <input type="text" id="edit-purpose-of-sowing" name="purpose_of_sowing">
+          </div>
+          <div class="form-group">
+            <label for="edit-honey-productivity">Урожайность мёда:</label>
+            <input type="number" id="edit-honey-productivity" name="honey_productivity" step="0.01">
+          </div>
+          <button type="submit" class="submit-button">Сохранить изменения</button>
+        </form>
+      </div>
+    </div>
+
   </main>
 
   <!-- Футер сайта -->
@@ -167,7 +233,7 @@
     <p>© 2025 ООО "Улей Земли". Все права защищены.</p>
   </footer>
 
-  <!-- Скрипты для модального окна -->
+  <!-- Скрипты для работы модальных окон и графика -->
   <script>
     // Модальное окно для добавления цветка
     const addFlowerButton = document.querySelector('.add-button');
@@ -188,13 +254,153 @@
         flowerModal.style.display = 'none';
       }
     });
-  </script>
 
+    // Модальное окно подтверждения удаления
+    let deleteModal = document.getElementById("delete-modal");
+    let deleteCloseButton = document.getElementById("delete-close-button");
+    let confirmDeleteButton = document.getElementById("confirm-delete");
+    let cancelDeleteButton = document.getElementById("cancel-delete");
+    let currentRow = null;
+    
+    const deleteButtons = document.querySelectorAll("table .delete-button");
+    deleteButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        currentRow = event.target.closest("tr");
+        deleteModal.style.display = "block";
+      });
+    });
+    
+    cancelDeleteButton.addEventListener("click", function() {
+      deleteModal.style.display = "none";
+      currentRow = null;
+    });
+    
+    confirmDeleteButton.addEventListener("click", function() {
+      if (currentRow) {
+        currentRow.remove();
+        currentRow = null;
+      }
+      deleteModal.style.display = "none";
+    });
+    
+    window.addEventListener("click", function(event) {
+      if (event.target == deleteModal) {
+        deleteModal.style.display = "none";
+        currentRow = null;
+      }
+    });
+
+    // Модальное окно для подробной информации о цветке
+    const detailsFlowerModal = document.getElementById("details-flower-modal");
+    const detailsFlowerCloseButton = document.getElementById("details-flower-close-button");
+    
+    const detailsButtons = document.querySelectorAll("table .details-button");
+    detailsButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        const currentRow = event.target.closest("tr");
+        // Чтение данных из data-атрибутов строки
+        const plantId = currentRow.dataset.plantId;
+        const plantName = currentRow.dataset.plantName;
+        const plantSpecies = currentRow.dataset.plantSpecies;
+        const honeyPrice = currentRow.dataset.honeyPrice;
+        const startBlooming = currentRow.dataset.startBlooming;
+        const endBlooming = currentRow.dataset.endBlooming;
+        const purposeOfSowing = currentRow.dataset.purposeOfSowing;
+        const honeyProductivity = currentRow.dataset.honeyProductivity;
+        
+        // Заполнение полей модального окна с подробной информацией
+        document.getElementById("detail-plant-id").innerText = plantId;
+        document.getElementById("detail-plant-name").innerText = plantName;
+        document.getElementById("detail-plant-species").innerText = plantSpecies;
+        document.getElementById("detail-honey-price").innerText = honeyPrice;
+        document.getElementById("detail-start-blooming").innerText = startBlooming;
+        document.getElementById("detail-end-blooming").innerText = endBlooming;
+        document.getElementById("detail-purpose-of-sowing").innerText = purposeOfSowing;
+        document.getElementById("detail-honey-productivity").innerText = honeyProductivity;
+        
+        detailsFlowerModal.style.display = "block";
+      });
+    });
+
+    detailsFlowerCloseButton.addEventListener("click", function() {
+      detailsFlowerModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+      if (event.target === detailsFlowerModal) {
+        detailsFlowerModal.style.display = "none";
+      }
+    });
+
+    // Модальное окно для редактирования данных о цветке
+    const editFlowerModal = document.getElementById("edit-flower-modal");
+    const editFlowerCloseButton = document.getElementById("edit-flower-close-button");
+    let currentEditRow = null;
+
+    const editButtons = document.querySelectorAll("table .edit-button");
+    editButtons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        currentEditRow = event.target.closest("tr");
+        // Предзаполнение полей формы редактирования с использованием data-атрибутов
+        document.getElementById("edit-plant-id").value = currentEditRow.dataset.plantId;
+        document.getElementById("edit-plant-name").value = currentEditRow.dataset.plantName;
+        document.getElementById("edit-plant-species").value = currentEditRow.dataset.plantSpecies;
+        document.getElementById("edit-honey-price").value = currentEditRow.dataset.honeyPrice;
+        document.getElementById("edit-start-blooming").value = currentEditRow.dataset.startBlooming;
+        document.getElementById("edit-end-blooming").value = currentEditRow.dataset.endBlooming;
+        document.getElementById("edit-purpose-of-sowing").value = currentEditRow.dataset.purposeOfSowing;
+        document.getElementById("edit-honey-productivity").value = currentEditRow.dataset.honeyProductivity;
+        editFlowerModal.style.display = "block";
+      });
+    });
+
+    editFlowerCloseButton.addEventListener("click", function() {
+      editFlowerModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+      if (event.target === editFlowerModal) {
+        editFlowerModal.style.display = "none";
+      }
+    });
+
+    // Обработка формы редактирования для цветка
+    const editFlowerForm = document.getElementById("edit-flower-form");
+    editFlowerForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      // Получение новых значений из форм
+      const newPlantName = document.getElementById("edit-plant-name").value;
+      const newPlantSpecies = document.getElementById("edit-plant-species").value;
+      const newHoneyPrice = document.getElementById("edit-honey-price").value;
+      const newStartBlooming = document.getElementById("edit-start-blooming").value;
+      const newEndBlooming = document.getElementById("edit-end-blooming").value;
+      const newPurposeOfSowing = document.getElementById("edit-purpose-of-sowing").value;
+      const newHoneyProductivity = document.getElementById("edit-honey-productivity").value;
+      
+      // Обновление data-атрибутов в текущей строке
+      if (currentEditRow) {
+        currentEditRow.dataset.plantName = newPlantName;
+        currentEditRow.dataset.plantSpecies = newPlantSpecies;
+        currentEditRow.dataset.honeyPrice = newHoneyPrice;
+        currentEditRow.dataset.startBlooming = newStartBlooming;
+        currentEditRow.dataset.endBlooming = newEndBlooming;
+        currentEditRow.dataset.purposeOfSowing = newPurposeOfSowing;
+        currentEditRow.dataset.honeyProductivity = newHoneyProductivity;
+      }
+      
+      // Закрыть модальное окно редактирования
+      editFlowerModal.style.display = "none";
+    });
+  </script>
+  
   <!-- Скрипт для создания графика -->
   <script>
     const ctx = document.getElementById("flowerChart").getContext("2d");
     const flowerChart = new Chart(ctx, {
-      type: "line", // тип графика (линейный, можно сменить на bar)
+      type: "line", // Тип графика (линейный, можно сменить на bar)
       data: {
         labels: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
         datasets: [{
@@ -233,48 +439,6 @@
             text: "Цветение и сбор мёда по культурам"
           }
         }
-      }
-    });
-
-    // Модальное окно подтверждения удаления
-    var deleteModal = document.getElementById("delete-modal");
-    var deleteCloseButton = document.getElementById("delete-close-button");
-    var confirmDeleteButton = document.getElementById("confirm-delete");
-    var cancelDeleteButton = document.getElementById("cancel-delete");
-    var currentRow = null; // Ссылка на строку, которую нужно удалить
-
-    // При клике на любую кнопку "Удалить" в таблице
-    var deleteButtons = document.querySelectorAll("table .delete-button");
-    deleteButtons.forEach(function(button) {
-      button.addEventListener("click", function(event) {
-        event.preventDefault();
-        // Определяет какую строку необходимо удалить (родительский элемент <tr>)
-        currentRow = event.target.closest("tr");
-        // Открывает модальное окно подтверждения удаления
-        deleteModal.style.display = "block";
-      });
-    });
-
-    // Если нажали кнопку "Отмена"
-    cancelDeleteButton.addEventListener("click", function() {
-      deleteModal.style.display = "none";
-      currentRow = null;
-    });
-
-    // Если нажали кнопку "Удалить" в модальном окне
-    confirmDeleteButton.addEventListener("click", function() {
-      if (currentRow) {
-        // Здесь я так понял настраивать удаление через БД
-        currentRow.remove();
-        currentRow = null;
-      }
-      deleteModal.style.display = "none";
-    });
-    // Закрыть модальное окно при клике вне области его содержимого
-    window.addEventListener("click", function(event) {
-      if (event.target == deleteModal) {
-        deleteModal.style.display = "none";
-        currentRow = null;
       }
     });
   </script>
